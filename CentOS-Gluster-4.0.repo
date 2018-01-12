@@ -1,0 +1,19 @@
+# CentOS-Gluster-4.0.repo
+#
+# Please see http://wiki.centos.org/SpecialInterestGroup/Storage for more
+# information
+
+[centos-gluster40]
+name=CentOS-$releasever - Gluster 4.0 (Short Term Maintanance)
+baseurl=@BASEURL@/$releasever/storage/$basearch/gluster-4.0/
+gpgcheck=1
+enabled=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-Storage
+
+[centos-gluster40-test]
+name=CentOS-$releasever - Gluster 4.0 Testing (Short Term Maintenance)
+baseurl=http://buildlogs.centos.org/centos/$releasever/storage/$basearch/gluster-4.0/
+gpgcheck=0
+enabled=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-SIG-Storage
+
