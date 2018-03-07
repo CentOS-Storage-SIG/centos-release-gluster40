@@ -1,6 +1,6 @@
 Summary: Gluster 4.0 (Short Term Stable) packages from the CentOS Storage SIG repository
 Name: centos-release-gluster40
-Version: 0.9
+Version: 1.0
 Release: 1%{?dist}
 License: GPLv2
 URL: http://wiki.centos.org/SpecialInterestGroup/Storage
@@ -41,6 +41,9 @@ sed -i -e "s,@BASEURL@,http://mirror.centos.org/altarch/7," %{buildroot}%{_sysco
 %config(noreplace) %{_sysconfdir}/yum.repos.d/CentOS-Gluster-4.0.repo
 
 %changelog
-* Fri Jan 12 2017 Niels de Vos <ndevos@redhat.com> - 0.9-1
+* Wed Mar 7 2018 Niels de Vos <ndevos@redhat.com> - 1.0-1
+- Disable centos-gluster40-test, enable centos-gluster40 repo
+
+* Fri Jan 12 2018 Niels de Vos <ndevos@redhat.com> - 0.9-1
 - Initial version based on centos-release-gluster313
 - Only the centos-gluster40-test repo is enabled during Beta

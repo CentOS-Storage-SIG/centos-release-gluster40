@@ -16,5 +16,5 @@ Building the package can be done like this:
 
     $ cbs \
            build core7-extras-common-el7.centos \
-           centos-release-gluster40-0.9-1.el7.centos.src.rpm
+           centos-release-gluster40-1.0-1.el7.centos.src.rpm
 
