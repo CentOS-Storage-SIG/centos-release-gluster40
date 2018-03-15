@@ -1,7 +1,15 @@
+%global altarch 0
+%if ( 0%{?centos} >= 7 )
+%ifnarch x86_64
+# altarch is only available for CentOS-7, non c86_64
+%global altarch 1
+%endif
+%endif
+
 Summary: Gluster 4.0 (Short Term Stable) packages from the CentOS Storage SIG repository
 Name: centos-release-gluster40
 Version: 1.0
-Release: 2%{?dist}
+Release: 3%{?dist}
 License: GPLv2
 URL: http://wiki.centos.org/SpecialInterestGroup/Storage
 Source0: CentOS-Gluster-4.0.repo
@@ -30,10 +38,10 @@ https://www.gluster.org/community/release-schedule
 
 %install
 install -D -m 644 %{SOURCE0} %{buildroot}%{_sysconfdir}/yum.repos.d/CentOS-Gluster-4.0.repo
-%ifarch x86_64
-sed -i -e "s,@BASEURL@,http://mirror.centos.org/centos," %{buildroot}%{_sysconfdir}/yum.repos.d/CentOS-Gluster-4.0.repo
-%else
+%if %{altarch}
 sed -i -e "s,@BASEURL@,http://mirror.centos.org/altarch," %{buildroot}%{_sysconfdir}/yum.repos.d/CentOS-Gluster-4.0.repo
+%else
+sed -i -e "s,@BASEURL@,http://mirror.centos.org/centos," %{buildroot}%{_sysconfdir}/yum.repos.d/CentOS-Gluster-4.0.repo
 %endif
 
 %files
@@ -41,6 +49,9 @@ sed -i -e "s,@BASEURL@,http://mirror.centos.org/altarch," %{buildroot}%{_sysconf
 %config(noreplace) %{_sysconfdir}/yum.repos.d/CentOS-Gluster-4.0.repo
 
 %changelog
+* Thu Mar 15 2018 Niels de Vos <ndevos@redhat.com> - 1.0-3
+- Fix altarch detection for .el6/i686
+
 * Thu Mar 15 2018 Niels de Vos <ndevos@redhat.com> - 1.0-2
 - Correct the repository URL
 
