@@ -1,7 +1,7 @@
 Summary: Gluster 4.0 (Short Term Stable) packages from the CentOS Storage SIG repository
 Name: centos-release-gluster40
 Version: 1.0
-Release: 1%{?dist}
+Release: 2%{?dist}
 License: GPLv2
 URL: http://wiki.centos.org/SpecialInterestGroup/Storage
 Source0: CentOS-Gluster-4.0.repo
@@ -31,9 +31,9 @@ https://www.gluster.org/community/release-schedule
 %install
 install -D -m 644 %{SOURCE0} %{buildroot}%{_sysconfdir}/yum.repos.d/CentOS-Gluster-4.0.repo
 %ifarch x86_64
-sed -i -e "s,@BASEURL@,http://mirror.centos.org/centos/7," %{buildroot}%{_sysconfdir}/yum.repos.d/CentOS-Gluster-4.0.repo
+sed -i -e "s,@BASEURL@,http://mirror.centos.org/centos," %{buildroot}%{_sysconfdir}/yum.repos.d/CentOS-Gluster-4.0.repo
 %else
-sed -i -e "s,@BASEURL@,http://mirror.centos.org/altarch/7," %{buildroot}%{_sysconfdir}/yum.repos.d/CentOS-Gluster-4.0.repo
+sed -i -e "s,@BASEURL@,http://mirror.centos.org/altarch," %{buildroot}%{_sysconfdir}/yum.repos.d/CentOS-Gluster-4.0.repo
 %endif
 
 %files
@@ -41,6 +41,9 @@ sed -i -e "s,@BASEURL@,http://mirror.centos.org/altarch/7," %{buildroot}%{_sysco
 %config(noreplace) %{_sysconfdir}/yum.repos.d/CentOS-Gluster-4.0.repo
 
 %changelog
+* Thu Mar 15 2018 Niels de Vos <ndevos@redhat.com> - 1.0-2
+- Correct the repository URL
+
 * Wed Mar 7 2018 Niels de Vos <ndevos@redhat.com> - 1.0-1
 - Disable centos-gluster40-test, enable centos-gluster40 repo
 
